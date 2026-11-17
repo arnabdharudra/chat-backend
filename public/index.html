@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Chat App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Chat</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="chat-container">
-        <div id="messages"></div>
-        <input id="message-input" type="text" placeholder="Type your message...">
-        <button id="send-btn">Send</button>
-    </div>
+  <main class="card">
+    <header>
+      <h1>Secure Chat</h1>
+      <div id="who" hidden><span id="who-name"></span> <button id="logout-btn" class="link">Log out</button></div>
+    </header>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="chat.js"></script>
+    <section id="auth-view">
+      <form id="auth-form">
+        <label>Username <input id="username" autocomplete="username" required minlength="3" maxlength="30"></label>
+        <label>Password <input id="password" type="password" autocomplete="current-password" required minlength="8"></label>
+        <div class="row">
+          <button type="submit" data-mode="login">Log in</button>
+          <button type="submit" data-mode="register" class="secondary">Create account</button>
+        </div>
+        <p id="auth-error" class="error" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="chat-view" hidden>
+      <div id="messages" aria-live="polite"></div>
+      <form id="message-form" class="row">
+        <input id="message-input" placeholder="Type a message..." maxlength="1000" autocomplete="off">
+        <button type="submit">Send</button>
+      </form>
+      <p id="chat-error" class="error" role="alert"></p>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
