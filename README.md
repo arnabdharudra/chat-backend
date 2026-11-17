@@ -2,6 +2,8 @@
 
 A real-time group chat where people **create an account, log in, and chat live**. Messages are saved, so anyone who joins sees the last 50 messages.
 
+![Chat screenshot](docs/screenshot.png)
+
 Built with Node.js, Express, Socket.IO and MongoDB.
 
 ![CI](https://github.com/arnabdharudra/chat-backend/actions/workflows/ci.yml/badge.svg)
